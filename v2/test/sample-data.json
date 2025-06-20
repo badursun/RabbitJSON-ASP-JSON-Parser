@@ -1,0 +1,291 @@
+{
+  "metadata": {
+    "version": "2.1.0",
+    "generatedAt": "2025-01-20T15:35:00Z",
+    "source": "RabbitJSON Sample Data",
+    "description": "Comprehensive JSON structure for testing real-world scenarios",
+    "dataTypes": ["string", "number", "boolean", "null", "object", "array"],
+    "encoding": "UTF-8"
+  },
+  "company": {
+    "name": "RabbitCMS Technology",
+    "founded": 2020,
+    "headquarters": {
+      "country": "Turkey",
+      "city": "Istanbul",
+      "address": {
+        "street": "Tech Boulevard 123",
+        "district": "Şişli",
+        "postalCode": "34394",
+        "coordinates": {
+          "latitude": 41.0082,
+          "longitude": 28.9784
+        }
+      }
+    },
+    "employees": 250,
+    "isPublic": false,
+    "subsidiaries": ["RabbitCMS Europe", "RabbitCMS USA", "RabbitCMS Asia"],
+    "technologies": {
+      "backend": ["ASP Classic", "Node.js", "PHP", "Python"],
+      "frontend": ["JavaScript", "React", "Vue.js"],
+      "databases": ["SQL Server", "MySQL", "MongoDB"],
+      "cloud": ["Azure", "AWS", "Google Cloud"]
+    }
+  },
+  "products": [
+    {
+      "id": 1001,
+      "name": "RabbitJSON Library",
+      "category": "Development Tools",
+      "price": 0.00,
+      "currency": "USD",
+      "isOpenSource": true,
+      "description": "Advanced JSON parsing library for Classic ASP",
+      "features": [
+        "Fast parsing",
+        "Error handling",
+        "Path-based access",
+        "Memory efficient"
+      ],
+      "downloads": {
+        "total": 15847,
+        "thisMonth": 2341,
+        "avgPerDay": 78
+      },
+      "ratings": {
+        "average": 4.8,
+        "count": 127,
+        "distribution": {
+          "5": 89,
+          "4": 28,
+          "3": 7,
+          "2": 2,
+          "1": 1
+        }
+      },
+      "compatibility": {
+        "asp": "3.0+",
+        "iis": "5.0+",
+        "vbscript": "5.0+",
+        "windows": ["Server 2003", "Server 2008", "Server 2012", "Server 2016", "Server 2019", "Server 2022"]
+      }
+    },
+    {
+      "id": 1002,
+      "name": "RabbitCMS Pro",
+      "category": "Content Management",
+      "price": 299.99,
+      "currency": "USD",
+      "isOpenSource": false,
+      "description": "Professional content management system",
+      "features": [
+        "Multi-language support",
+        "SEO optimization",
+        "User management",
+        "Plugin system",
+        "Responsive themes"
+      ],
+      "downloads": {
+        "total": 5420,
+        "thisMonth": 89,
+        "avgPerDay": 3
+      },
+      "ratings": {
+        "average": 4.6,
+        "count": 234,
+        "distribution": {
+          "5": 156,
+          "4": 52,
+          "3": 18,
+          "2": 6,
+          "1": 2
+        }
+      },
+      "compatibility": {
+        "asp": "3.0+",
+        "iis": "6.0+",
+        "vbscript": "5.6+",
+        "windows": ["Server 2008", "Server 2012", "Server 2016", "Server 2019", "Server 2022"]
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": 12345,
+      "username": "john_developer",
+      "email": "john@techcompany.com",
+      "profile": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "age": 32,
+        "country": "USA",
+        "avatar": null,
+        "bio": "Full-stack developer with 10+ years experience",
+        "skills": ["JavaScript", "C#", "SQL", "ASP.NET"]
+      },
+      "subscription": {
+        "plan": "premium",
+        "startDate": "2024-03-15",
+        "endDate": "2025-03-15",
+        "autoRenew": true,
+        "paymentMethod": "credit_card"
+      },
+      "activity": {
+        "lastLogin": "2025-01-20T10:15:30Z",
+        "loginCount": 1547,
+        "downloadsCount": 23,
+        "reviewsCount": 5
+      },
+      "preferences": {
+        "language": "en",
+        "timezone": "America/New_York",
+        "emailNotifications": true,
+        "theme": "dark"
+      }
+    },
+    {
+      "id": 12346,
+      "username": "ayse_frontend",
+      "email": "ayse@yazilimci.com.tr",
+      "profile": {
+        "firstName": "Ayşe",
+        "lastName": "Demir",
+        "age": 28,
+        "country": "Turkey",
+        "avatar": "https://cdn.example.com/avatars/ayse.jpg",
+        "bio": "Frontend specialist focusing on modern JavaScript frameworks",
+        "skills": ["React", "Vue.js", "TypeScript", "CSS"]
+      },
+      "subscription": {
+        "plan": "basic",
+        "startDate": "2024-11-01",
+        "endDate": "2025-11-01",
+        "autoRenew": false,
+        "paymentMethod": "paypal"
+      },
+      "activity": {
+        "lastLogin": "2025-01-19T16:42:18Z",
+        "loginCount": 89,
+        "downloadsCount": 7,
+        "reviewsCount": 12
+      },
+      "preferences": {
+        "language": "tr",
+        "timezone": "Europe/Istanbul",
+        "emailNotifications": false,
+        "theme": "light"
+      }
+    }
+  ],
+  "analytics": {
+    "traffic": {
+      "dailyVisitors": 2847,
+      "monthlyVisitors": 67892,
+      "pageViews": 145623,
+      "bounceRate": 0.32,
+      "avgSessionDuration": 245.6
+    },
+    "geographical": {
+      "topCountries": [
+        {"country": "USA", "percentage": 35.2, "visitors": 23864},
+        {"country": "Turkey", "percentage": 18.7, "visitors": 12695},
+        {"country": "Germany", "percentage": 12.4, "visitors": 8419},
+        {"country": "UK", "percentage": 8.9, "visitors": 6043},
+        {"country": "France", "percentage": 6.1, "visitors": 4141}
+      ]
+    },
+    "downloads": {
+      "byProduct": {
+        "RabbitJSON": 15847,
+        "RabbitCMS Pro": 5420,
+        "RabbitTools": 3291
+      },
+      "byMonth": [
+        {"month": "2024-07", "count": 1247},
+        {"month": "2024-08", "count": 1889},
+        {"month": "2024-09", "count": 2156},
+        {"month": "2024-10", "count": 2734},
+        {"month": "2024-11", "count": 3012},
+        {"month": "2024-12", "count": 3421},
+        {"month": "2025-01", "count": 4098}
+      ]
+    }
+  },
+  "configuration": {
+    "api": {
+      "baseUrl": "https://api.rabbitcms.com",
+      "version": "v2",
+      "timeout": 30000,
+      "retryAttempts": 3,
+      "rateLimit": {
+        "requestsPerMinute": 1000,
+        "burstLimit": 100
+      }
+    },
+    "database": {
+      "connectionString": "Data Source=db.server.com;Initial Catalog=RabbitCMS;Integrated Security=true",
+      "maxPoolSize": 100,
+      "commandTimeout": 30,
+      "enableLogging": true
+    },
+    "features": {
+      "enableCache": true,
+      "enableCompress": true,
+      "enableSsl": true,
+      "enableCors": false,
+      "maintenanceMode": false
+    }
+  },
+  "systemInfo": {
+    "server": {
+      "os": "Windows Server 2022",
+      "iisVersion": "10.0",
+      "aspVersion": "3.0",
+      "vbscriptVersion": "5.8",
+      "memory": {
+        "total": "32 GB",
+        "available": "18.5 GB",
+        "used": "13.5 GB"
+      },
+      "cpu": {
+        "model": "Intel Xeon Gold 6248R",
+        "cores": 24,
+        "threads": 48,
+        "usage": 23.7
+      }
+    },
+    "application": {
+      "uptime": 2847.5,
+      "requestsProcessed": 1247893,
+      "errorsCount": 127,
+      "errorRate": 0.01,
+      "averageResponseTime": 89.3
+    }
+  },
+  "testData": {
+    "specialCharacters": "Testing çöğüı ÇÖĞÜŞI áéíóú ÁÉÍÓÚ àèìòù ÀÈÌÒÙ âêîôû ÂÊÎÔÛ",
+    "unicodeEmojis": "🐰🚀📊💡🎯✅❌⚡🔧📈",
+    "numbers": {
+      "integer": 42,
+      "negative": -123,
+      "float": 3.14159,
+      "scientific": 1.23e-4,
+      "large": 9007199254740991
+    },
+    "booleans": {
+      "trueValue": true,
+      "falseValue": false
+    },
+    "nullValue": null,
+    "emptyArray": [],
+    "emptyObject": {},
+    "quotes": "String with \"quoted\" content and 'single quotes'",
+    "escapeChars": "Line 1\nLine 2\tTabbed\r\nWindows newline\\Backslash",
+    "nestedArray": [
+      [1, 2, 3],
+      ["a", "b", "c"],
+      [true, false, null]
+    ]
+  }
+} 

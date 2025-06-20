@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐰 RabbitJSON v2.1.1 - Tüm Örnekler Deposu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-dark); 
+            background: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+        
+        /* Header */
+        .header { 
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+            color: white; 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header h1 { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p { 
+            font-size: 1.2rem; 
+            opacity: 0.95; 
+            font-weight: 400;
+        }
+        
+        /* Main Layout */
+        .container { 
+            display: flex; 
+            min-height: calc(100vh - 200px);
+            background: var(--bg-light);
+        }
+        
+        /* Sidebar */
+        .sidebar { 
+            width: 300px; 
+            background: var(--bg-card); 
+            border-right: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            height: 100vh; 
+            overflow-y: auto;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .sidebar ul { list-style: none; padding: 1.5rem; }
+        .sidebar li { margin-bottom: 0.3rem; }
+        
+        .sidebar a { 
+            text-decoration: none; 
+            color: var(--text-light); 
+            padding: 0.6rem 1rem; 
+            display: block; 
+            border-radius: 8px; 
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar a:hover { 
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.05));
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+        
+        .sidebar .section-title { 
+            font-weight: 700; 
+            color: var(--text-dark); 
+            margin-top: 1.5rem; 
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0 1rem;
+        }
+        
+        /* Content */
+        .content { 
+            flex: 1; 
+            padding: 2rem; 
+            background: var(--bg-card);
+            margin: 1rem 1rem 1rem 0;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Example Container */
+        .example-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .example-code {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            position: relative;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .example-explanation {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .example-explanation h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .example-explanation ul {
+            margin-left: 1.2rem;
+            margin-top: 0.8rem;
+        }
+        
+        .example-explanation ul li {
+            margin-bottom: 0.4rem;
+            color: var(--text-light);
+        }
+        
+        /* Section Headers */
+        .section { 
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 { 
+            color: var(--text-dark); 
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) 1;
+            padding-bottom: 1rem; 
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .section h3 { 
+            color: var(--text-dark); 
+            margin-top: 2rem; 
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        /* Info boxes */
+        .info-box { 
+            padding: 1.2rem; 
+            border-radius: 8px; 
+            margin: 1.5rem 0; 
+            border-left: 4px solid;
+        }
+        
+        .info-box.success { 
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            border-color: var(--success-color);
+            color: #065f46;
+        }
+        
+        .info-box.info { 
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            border-color: var(--info-color);
+            color: #1e40af;
+        }
+        
+        .info-box.warning { 
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            border-color: var(--warning-color);
+            color: #92400e;
+        }
+        
+        /* JSON Display */
+        .json-display {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid #334155;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .content { margin: 1rem; }
+            .example-container { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .header p { font-size: 1rem; }
+            .content { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐰 RabbitJSON v2.1.1</h1>
+        <p>Tüm Örnekler Deposu - Classic ASP JSON İşleme Kütüphanesi</p>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul>
+                <li class="section-title">📊 VERİ YAPISI</li>
+                <li><a href="#sample-data">Örnek JSON Verisi</a></li>
+                <li><a href="#data-structure">Veri Yapısı Analizi</a></li>
+                
+                <li class="section-title">🔧 PARSING METHODS</li>
+                <li><a href="#parse-examples">Parse() Örnekleri</a></li>
+                <li><a href="#quickparse-examples">QuickParse() Örnekleri</a></li>
+                <li><a href="#url-loading">URL'den Yükleme</a></li>
+                
+                <li class="section-title">📖 VERİ ERİŞİMİ</li>
+                <li><a href="#getvalue-examples">GetValue() Örnekleri</a></li>
+                <li><a href="#getvaluesimple-examples">GetValueSimple() Örnekleri</a></li>
+                <li><a href="#hasvalue-examples">HasValue() Örnekleri</a></li>
+                <li><a href="#path-notation">Path Notation Yöntemleri</a></li>
+                
+                <li class="section-title">✏️ VERİ MANİPÜLASYONU</li>
+                <li><a href="#setvalue-examples">SetValue() Örnekleri</a></li>
+                <li><a href="#removevalue-examples">RemoveValue() Örnekleri</a></li>
+                <li><a href="#clear-examples">Clear() Örnekleri</a></li>
+                
+                <li class="section-title">📝 SERİLEŞTİRME</li>
+                <li><a href="#stringify-examples">Stringify() Örnekleri</a></li>
+                <li><a href="#compact-stringify">StringifyCompact() Örnekleri</a></li>
+                <li><a href="#quick-stringify">QuickStringify() Örnekleri</a></li>
+                
+                <li class="section-title">🔄 LOOP & İTERASYON</li>
+                <li><a href="#array-loops">Array Loop Örnekleri</a></li>
+                <li><a href="#object-loops">Object Loop Örnekleri</a></li>
+                <li><a href="#nested-loops">Nested Loop Örnekleri</a></li>
+                
+                <li class="section-title">🛠️ UTİLİTY METHODS</li>
+                <li><a href="#getkeys-examples">GetKeys() Örnekleri</a></li>
+                <li><a href="#error-handling">Error Handling</a></li>
+                <li><a href="#config-examples">Configuration Örnekleri</a></li>
+                
+                <li class="section-title">🌟 GERÇEK HAYAT</li>
+                <li><a href="#real-world-examples">Gerçek Hayat Uygulamaları</a></li>
+                <li><a href="#api-integration">API Entegrasyonu</a></li>
+                <li><a href="#user-management">Kullanıcı Yönetimi</a></li>
+                <li><a href="#analytics-examples">Analytics & Reporting</a></li>
+                <li><a href="#utility-examples">Utility Methods</a></li>
+                
+                <li class="section-title">⚡ PERFORMANS</li>
+                <li><a href="#performance-tips">İpuçları & Best Practices</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            
+            <!-- VERİ YAPISI BÖLÜMÜ -->
+            <section id="sample-data" class="section">
+                <h2>📊 Örnek JSON Verisi</h2>
+                <p>Bu dokümantasyonda kullanacağımız kapsamlı JSON verisi:</p>
+                
+                <div class="json-display">
+{
+  "metadata": {
+    "version": "2.1.0",
+    "generatedAt": "2025-01-20T15:35:00Z",
+    "source": "RabbitJSON Sample Data"
+  },
+  "company": {
+    "name": "RabbitCMS Technology",
+    "founded": 2020,
+    "headquarters": {
+      "country": "Turkey",
+      "city": "Istanbul",
+      "coordinates": {
+        "latitude": 41.0082,
+        "longitude": 28.9784
+      }
+    },
+    "employees": 250,
+    "isPublic": false
+  },
+  "products": [
+    {
+      "id": 1001,
+      "name": "RabbitJSON Library",
+      "category": "Development Tools",
+      "price": 0.00,
+      "isOpenSource": true,
+      "features": ["Fast parsing", "Error handling", "Path-based access"],
+      "downloads": {
+        "total": 15847,
+        "thisMonth": 2341,
+        "avgPerDay": 78
+      }
+    },
+    {
+      "id": 1002,
+      "name": "RabbitCMS Pro",
+      "category": "Content Management",
+      "price": 299.99,
+      "isOpenSource": false,
+      "features": ["Multi-language", "SEO optimization", "User management"]
+    }
+  ],
+  "users": [
+    {
+      "id": 12345,
+      "username": "john_developer",
+      "profile": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "age": 32,
+        "country": "USA"
+      },
+      "subscription": {
+        "plan": "premium",
+        "startDate": "2024-03-15",
+        "autoRenew": true
+      }
+    },
+    {
+      "id": 12346,
+      "username": "ayse_frontend",
+      "profile": {
+        "firstName": "Ayşe",
+        "lastName": "Demir",
+        "age": 28,
+        "country": "Turkey"
+      }
+    }
+  ],
+  "analytics": {
+    "traffic": {
+      "dailyVisitors": 2847,
+      "pageViews": 145623,
+      "bounceRate": 0.32
+    },
+    "geographical": {
+      "topCountries": [
+        {"country": "USA", "percentage": 35.2, "visitors": 23864},
+        {"country": "Turkey", "percentage": 18.7, "visitors": 12695},
+        {"country": "Germany", "percentage": 12.4, "visitors": 8419}
+      ]
+    }
+  }
+}
+                </div>
+                
+                <div class="info-box info">
+                    <h4>📋 Veri Yapısı Özellikleri</h4>
+                    <ul>
+                        <li><strong>Nested Objects:</strong> company.headquarters.coordinates</li>
+                        <li><strong>Arrays:</strong> products[], users[], topCountries[]</li>
+                        <li><strong>Mixed Types:</strong> String, Number, Boolean, Null</li>
+                        <li><strong>Complex Structures:</strong> Array içinde object, object içinde array</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PARSING METHODS BÖLÜMÜ -->
+            <section id="parse-examples" class="section">
+                <h2>🔧 Parse() Method Örnekleri</h2>
+                
+                <h3>1. Basit JSON String Parse</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' JSON string'ini parse et
+Set json = CreateRabbitJSON()
+Set result = json.Parse("{""name"":""John"",""age"":30}")
+
+If Not (result Is Nothing) Then
+    Response.Write "Parse başarılı!"
+    Response.Write "&lt;br&gt;İsim: " & json.GetValue("name", "")
+    Response.Write "&lt;br&gt;Yaş: " & json.GetValue("age", 0)
+Else
+    Response.Write "Parse hatası: " & json.LastError
+End If
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON string'ini VBScript Dictionary objesine çevirir. Parse başarısızsa Nothing döner.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>CreateRabbitJSON() ile instance oluştur</li>
+                            <li>Parse() methoduna JSON string'i ver</li>
+                            <li>Sonucu kontrol et (Nothing olabilir)</li>
+                            <li>GetValue() ile verilere eriş</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2. Kompleks JSON Parse</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Kompleks JSON yapısı
+Dim complexJSON
+complexJSON = "{""company"":{""name"":""RabbitCMS"","
+complexJSON = complexJSON & """employees"":[{""name"":""John"",""role"":""Dev""},"
+complexJSON = complexJSON & "{""name"":""Jane"",""role"":""Designer""}]}}"
+
+Set json = CreateRabbitJSON()
+Set result = json.Parse(complexJSON)
+
+If Not (result Is Nothing) Then
+    ' Şirket adı
+    companyName = json.GetValue("company.name", "")
+    
+    ' İlk çalışan
+    firstEmployee = json.GetValue("company.employees.0.name", "")
+    firstRole = json.GetValue("company.employees.0.role", "")
+    
+    Response.Write "Şirket: " & companyName & "&lt;br&gt;"
+    Response.Write "İlk Çalışan: " & firstEmployee & " (" & firstRole & ")"
+End If
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Nested obje ve array yapılarını parse eder. Path notation ile derinlemesine erişim sağlar.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Karmaşık JSON'lar için ideal</li>
+                            <li>Dot notation: "company.name"</li>
+                            <li>Array access: "employees.0.name"</li>
+                            <li>Unlimited nesting depth</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3. Error Handling ile Parse</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+Set json = CreateRabbitJSON()
+
+' Geçersiz JSON test
+Set result = json.Parse("{invalid json}")
+
+If result Is Nothing Then
+    Response.Write "&lt;div style='color:red'&gt;"
+    Response.Write "❌ Parse Hatası: " & json.LastError
+    Response.Write "&lt;/div&gt;"
+    
+    ' Hata temizle
+    json.ClearError()
+    
+    ' Tekrar dene - geçerli JSON ile
+    Set result = json.Parse("{""status"":""ok""}")
+    If Not (result Is Nothing) Then
+        Response.Write "&lt;div style='color:green'&gt;"
+        Response.Write "✅ İkinci deneme başarılı!"
+        Response.Write "&lt;/div&gt;"
+    End If
+End If
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Parse hatalarını yakalar ve yönetir. Production ortamında güvenli JSON işleme sağlar.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Her zaman Nothing kontrolü yap</li>
+                            <li>LastError ile hata mesajını al</li>
+                            <li>ClearError() ile hata temizle</li>
+                            <li>Try-again mantığı uygula</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- URL LOADING BÖLÜMÜ -->
+            <section id="url-loading" class="section">
+                <h2>🌐 URL'den JSON Yükleme</h2>
+                
+                <h3>1. HTTP API'den Veri Çekme</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' API'den direkt JSON yükle
+Set json = CreateRabbitJSON()
+Set result = json.Parse("https://jsonplaceholder.typicode.com/users/1")
+
+If Not (result Is Nothing) Then
+    userName = json.GetValue("name", "Bilinmiyor")
+    userEmail = json.GetValue("email", "Bilinmiyor")
+    userCompany = json.GetValue("company.name", "Bilinmiyor")
+    
+    Response.Write "&lt;h4&gt;API'den Gelen Veri:&lt;/h4&gt;"
+    Response.Write "👤 Kullanıcı: " & userName & "&lt;br&gt;"
+    Response.Write "📧 Email: " & userEmail & "&lt;br&gt;"
+    Response.Write "🏢 Şirket: " & userCompany
+Else
+    Response.Write "API Error: " & json.LastError
+End If
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>HTTP/HTTPS URL'lerden direkt JSON verisi çeker. API entegrasyonu için ideal.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Parse() methoduna URL ver</li>
+                            <li>HTTP GET request otomatik yapılır</li>
+                            <li>200 OK response beklenir</li>
+                            <li>JSON response parse edilir</li>
+                            <li>Network hatalarını handle et</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2. GitHub API Entegrasyonu</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' GitHub API'den user bilgisi çek
+Set json = CreateRabbitJSON()
+Set result = json.Parse("https://api.github.com/users/octocat")
+
+If Not (result Is Nothing) Then
+    login = json.GetValue("login", "")
+    name = json.GetValue("name", "")
+    followers = json.GetValue("followers", 0)
+    publicRepos = json.GetValue("public_repos", 0)
+    
+    Response.Write "&lt;div style='border:1px solid #ccc; padding:15px; border-radius:8px'&gt;"
+    Response.Write "&lt;h4&gt;🐙 GitHub Profile&lt;/h4&gt;"
+    Response.Write "Username: &lt;strong&gt;" & login & "&lt;/strong&gt;&lt;br&gt;"
+    Response.Write "Name: " & name & "&lt;br&gt;"
+    Response.Write "Followers: " & FormatNumber(followers, 0) & "&lt;br&gt;"
+    Response.Write "Public Repos: " & publicRepos
+    Response.Write "&lt;/div&gt;"
+End If
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Gerçek API'lerden canlı veri çeker. Sosyal medya, havadurumu, finans API'leri için kullanılabilir.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Public API'ler için authentication gerekmez</li>
+                            <li>Rate limiting'e dikkat et</li>
+                            <li>Cache mekanizması düşün</li>
+                            <li>Timeout ve retry mantığı ekle</li>
+                        </ul>
+                                         </div>
+                 </div>
+             </section>
+
+            <!-- VERİ ERİŞİMİ BÖLÜMÜ -->
+            <section id="getvalue-examples" class="section">
+                <h2>📖 GetValue() Method Örnekleri</h2>
+                
+                <h3>1. Basit Veri Erişimi</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Sample data parse et
+Set json = CreateRabbitJSON()
+json.Parse "{""name"":""Mehmet"",""age"":30,""active"":true,""salary"":null}"
+
+' Farklı tip değerler al
+userName = json.GetValue("name", "Bilinmiyor")           ' String
+userAge = json.GetValue("age", 0)                        ' Number
+isActive = json.GetValue("active", False)                ' Boolean
+userSalary = json.GetValue("salary", "Belirtilmemiş")    ' Null değer
+userPhone = json.GetValue("phone", "Yok")                ' Olmayan key
+
+Response.Write "👤 İsim: " & userName & "&lt;br&gt;"
+Response.Write "🎂 Yaş: " & userAge & "&lt;br&gt;"
+Response.Write "✅ Aktif: " & isActive & "&lt;br&gt;"
+Response.Write "💰 Maaş: " & userSalary & "&lt;br&gt;"
+Response.Write "📱 Telefon: " & userPhone
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON'dan güvenli şekilde değer alır. Değer yoksa veya null ise default değer döner.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>GetValue(path, defaultValue) formatında kullan</li>
+                            <li>Default değer tipine dikkat et</li>
+                            <li>Null değerler için anlamlı default ver</li>
+                            <li>Olmayan key'ler için fallback sağla</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2. Nested Object Erişimi</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Derinlemesine nested JSON
+Set json = CreateRabbitJSON()
+Dim nestedJSON
+nestedJSON = "{""user"":{""profile"":{""personal"":{""name"":""Ali"","
+nestedJSON = nestedJSON & """age"":25},""contact"":{""email"":""ali@test.com"","
+nestedJSON = nestedJSON & """phone"":""+90555123456""}},""settings"":{""theme"":""dark"","
+nestedJSON = nestedJSON & """language"":""tr""}}}"
+
+json.Parse(nestedJSON)
+
+' Derin path erişimi
+userName = json.GetValue("user.profile.personal.name", "")
+userAge = json.GetValue("user.profile.personal.age", 0)
+userEmail = json.GetValue("user.profile.contact.email", "")
+userTheme = json.GetValue("user.settings.theme", "light")
+userLang = json.GetValue("user.settings.language", "en")
+
+Response.Write "&lt;h4&gt;👤 Kullanıcı Profili&lt;/h4&gt;"
+Response.Write "İsim: " & userName & "&lt;br&gt;"
+Response.Write "Yaş: " & userAge & "&lt;br&gt;"
+Response.Write "Email: " & userEmail & "&lt;br&gt;"
+Response.Write "Tema: " & userTheme & "&lt;br&gt;"
+Response.Write "Dil: " & userLang
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Çok katmanlı JSON yapılarında dot notation ile derinlemesine erişim sağlar.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Nokta ile ayır: "user.profile.name"</li>
+                            <li>Unlimited depth desteği</li>
+                            <li>Her seviyede null kontrolü</li>
+                            <li>Path bulunamazsa default döner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3. Array Elemanlarına Erişim</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Array içeren JSON
+Set json = CreateRabbitJSON()
+Dim arrayJSON
+arrayJSON = "{""products"":[{""id"":1,""name"":""Laptop"",""price"":999.99},"
+arrayJSON = arrayJSON & "{""id"":2,""name"":""Mouse"",""price"":29.99},"
+arrayJSON = arrayJSON & "{""id"":3,""name"":""Keyboard"",""price"":79.99}],"
+arrayJSON = arrayJSON & """categories"":[""Electronics"",""Computers"",""Accessories""]}"
+
+json.Parse(arrayJSON)
+
+' Array elemanlarına erişim (0-based index)
+firstProduct = json.GetValue("products.0.name", "")
+firstPrice = json.GetValue("products.0.price", 0)
+secondProduct = json.GetValue("products.1.name", "")
+thirdProduct = json.GetValue("products.2.name", "")
+
+' String array erişimi
+firstCategory = json.GetValue("categories.0", "")
+secondCategory = json.GetValue("categories.1", "")
+
+Response.Write "&lt;h4&gt;🛍️ Ürünler&lt;/h4&gt;"
+Response.Write "1. " & firstProduct & " - $" & firstPrice & "&lt;br&gt;"
+Response.Write "2. " & secondProduct & "&lt;br&gt;"
+Response.Write "3. " & thirdProduct & "&lt;br&gt;"
+Response.Write "&lt;h4&gt;📂 Kategoriler&lt;/h4&gt;"
+Response.Write "• " & firstCategory & "&lt;br&gt;"
+Response.Write "• " & secondCategory
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Array elemanlarına index ile erişim sağlar. Hem object array hem string array destekler.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Array index: "products.0", "products.1"</li>
+                            <li>0-based indexing (0, 1, 2, 3...)</li>
+                            <li>Object array: "products.0.name"</li>
+                            <li>String array: "categories.0"</li>
+                            <li>Geçersiz index için default döner</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LOOP & İTERASYON BÖLÜMÜ -->
+            <section id="array-loops" class="section">
+                <h2>🔄 Loop & İterasyon Örnekleri</h2>
+                
+                <h3>1. Array Üzerinde Loop</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Ürün listesi JSON'u
+Set json = CreateRabbitJSON()
+Dim productJSON
+productJSON = "{""products"":[{""name"":""Laptop"",""price"":999},"
+productJSON = productJSON & "{""name"":""Mouse"",""price"":29},"
+productJSON = productJSON & "{""name"":""Keyboard"",""price"":79}]}"
+
+json.Parse(productJSON)
+
+' Array uzunluğunu bul (manuel olarak)
+Dim productCount, i
+productCount = 0
+Do While json.HasValue("products." & productCount)
+    productCount = productCount + 1
+Loop
+
+Response.Write "&lt;h4&gt;🛒 Ürün Listesi (" & productCount & " adet)&lt;/h4&gt;"
+Response.Write "&lt;ul&gt;"
+
+' Array üzerinde loop
+For i = 0 To productCount - 1
+    productName = json.GetValue("products." & i & ".name", "")
+    productPrice = json.GetValue("products." & i & ".price", 0)
+    
+    If productName &lt;&gt; "" Then
+        Response.Write "&lt;li&gt;" & productName & " - $" & productPrice & "&lt;/li&gt;"
+    End If
+Next
+
+Response.Write "&lt;/ul&gt;"
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON array'lerinde tüm elemanları dolaşır. E-commerce, kullanıcı listeleri için ideal.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>HasValue() ile array uzunluğu bul</li>
+                            <li>For i = 0 To count-1 ile dolaş</li>
+                            <li>"arrayName." & i & ".property" formatı</li>
+                            <li>Empty kontrolü yap</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2. Nested Object Loop</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Kullanıcı listesi
+Set json = CreateRabbitJSON()
+Dim userJSON
+userJSON = "{""users"":[{""name"":""John"",""role"":""Admin"",""active"":true},"
+userJSON = userJSON & "{""name"":""Jane"",""role"":""Editor"",""active"":false},"
+userJSON = userJSON & "{""name"":""Bob"",""role"":""User"",""active"":true}]}"
+
+json.Parse(userJSON)
+
+' Kullanıcı sayısını bul
+Dim userCount, i
+userCount = 0
+Do While json.HasValue("users." & userCount)
+    userCount = userCount + 1
+Loop
+
+Response.Write "&lt;h4&gt;👥 Kullanıcı Listesi&lt;/h4&gt;"
+Response.Write "&lt;table border='1' style='border-collapse:collapse'&gt;"
+Response.Write "&lt;tr&gt;&lt;th&gt;İsim&lt;/th&gt;&lt;th&gt;Rol&lt;/th&gt;&lt;th&gt;Durum&lt;/th&gt;&lt;/tr&gt;"
+
+For i = 0 To userCount - 1
+    userName = json.GetValue("users." & i & ".name", "")
+    userRole = json.GetValue("users." & i & ".role", "")
+    isActive = json.GetValue("users." & i & ".active", False)
+    
+    Dim statusText, statusColor
+    If isActive Then
+        statusText = "Aktif"
+        statusColor = "green"
+    Else
+        statusText = "Pasif"
+        statusColor = "red"
+    End If
+    
+    Response.Write "&lt;tr&gt;"
+    Response.Write "&lt;td&gt;" & userName & "&lt;/td&gt;"
+    Response.Write "&lt;td&gt;" & userRole & "&lt;/td&gt;"
+    Response.Write "&lt;td style='color:" & statusColor & "'&gt;" & statusText & "&lt;/td&gt;"
+    Response.Write "&lt;/tr&gt;"
+Next
+
+Response.Write "&lt;/table&gt;"
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Karmaşık object array'lerini tablo formatında gösterir. Admin panelleri için mükemmel.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Multiple property access</li>
+                            <li>Conditional logic (if-else)</li>
+                            <li>HTML table generation</li>
+                            <li>Data formatting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3. Dictionary Keys ile Loop</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Configuration objesi
+Set json = CreateRabbitJSON()
+Dim configJSON
+configJSON = "{""database"":{""host"":""localhost"",""port"":3306,""name"":""mydb""},"
+configJSON = configJSON & """cache"":{""enabled"":true,""ttl"":3600,""provider"":""redis""},"
+configJSON = configJSON & """email"":{""smtp"":""smtp.gmail.com"",""port"":587}}"
+
+json.Parse(configJSON)
+
+' Root level keys'leri al
+Dim allKeys, i
+allKeys = json.GetKeys()
+
+Response.Write "&lt;h4&gt;⚙️ Konfigürasyon Ayarları&lt;/h4&gt;"
+
+For i = 0 To UBound(allKeys)
+    Dim currentKey
+    currentKey = allKeys(i)
+    
+    Response.Write "&lt;h5&gt;📂 " & UCase(currentKey) & "&lt;/h5&gt;"
+    Response.Write "&lt;ul&gt;"
+    
+    ' Her kategorinin alt ayarlarını listele
+    Select Case currentKey
+        Case "database"
+            Response.Write "&lt;li&gt;Host: " & json.GetValue("database.host", "") & "&lt;/li&gt;"
+            Response.Write "&lt;li&gt;Port: " & json.GetValue("database.port", 0) & "&lt;/li&gt;"
+            Response.Write "&lt;li&gt;Database: " & json.GetValue("database.name", "") & "&lt;/li&gt;"
+        Case "cache"
+            Response.Write "&lt;li&gt;Enabled: " & json.GetValue("cache.enabled", False) & "&lt;/li&gt;"
+            Response.Write "&lt;li&gt;TTL: " & json.GetValue("cache.ttl", 0) & " seconds&lt;/li&gt;"
+            Response.Write "&lt;li&gt;Provider: " & json.GetValue("cache.provider", "") & "&lt;/li&gt;"
+        Case "email"
+            Response.Write "&lt;li&gt;SMTP: " & json.GetValue("email.smtp", "") & "&lt;/li&gt;"
+            Response.Write "&lt;li&gt;Port: " & json.GetValue("email.port", 0) & "&lt;/li&gt;"
+    End Select
+    
+    Response.Write "&lt;/ul&gt;"
+Next
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON objesinin key'lerini dinamik olarak dolaşır. Configuration management için ideal.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>GetKeys() ile key array'i al</li>
+                            <li>UBound() ile array uzunluğu</li>
+                            <li>Select Case ile key bazlı işlem</li>
+                            <li>Dynamic path building</li>
+                        </ul>
+                    </div>
+                </div>
+                         </section>
+
+            <!-- VERİ MANİPÜLASYONU BÖLÜMÜ -->
+            <section id="setvalue-examples" class="section">
+                <h2>✏️ SetValue() Method Örnekleri</h2>
+                
+                <h3>1. Basit Veri Yazma</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Boş JSON'dan başla
+Set json = CreateRabbitJSON()
+json.Parse("{}")
+
+' Basit değerler set et
+json.SetValue "name", "Mehmet"
+json.SetValue "age", 30
+json.SetValue "active", True
+json.SetValue "salary", 5000.50
+
+' Sonucu göster
+result = json.Stringify(json.Data, 2)
+Response.Write "&lt;h4&gt;✅ Oluşturulan JSON:&lt;/h4&gt;"
+Response.Write "&lt;pre&gt;" & result & "&lt;/pre&gt;"
+
+' Değerleri oku
+Response.Write "&lt;h4&gt;📖 Okunan Değerler:&lt;/h4&gt;"
+Response.Write "İsim: " & json.GetValue("name", "") & "&lt;br&gt;"
+Response.Write "Yaş: " & json.GetValue("age", 0) & "&lt;br&gt;"
+Response.Write "Aktif: " & json.GetValue("active", False) & "&lt;br&gt;"
+Response.Write "Maaş: " & FormatCurrency(json.GetValue("salary", 0))
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON objesine yeni değerler ekler veya mevcut değerleri günceller. Dinamik veri oluşturma için ideal.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>SetValue(path, value) formatında kullan</li>
+                            <li>Farklı veri tiplerini destekler</li>
+                            <li>Root level property'ler için basit path</li>
+                            <li>Otomatik tip detection</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GERÇEK HAYAT UYGULAMALARI -->
+            <section id="real-world-examples" class="section">
+                <h2>🌟 Gerçek Hayat Uygulamaları</h2>
+                
+                <h3>1. E-Commerce Sepet Yönetimi</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Sepet JSON'u oluştur
+Set json = CreateRabbitJSON()
+json.Parse("{}")
+
+' Sepet bilgileri
+json.SetValue "cart.sessionId", Session.SessionID
+json.SetValue "cart.customerId", 12345
+json.SetValue "cart.currency", "TRY"
+
+' Ürünleri sepete ekle
+json.SetValue "cart.items.0.productId", 1001
+json.SetValue "cart.items.0.name", "MacBook Pro 14"
+json.SetValue "cart.items.0.price", 25999.99
+json.SetValue "cart.items.0.quantity", 1
+
+json.SetValue "cart.items.1.productId", 1002
+json.SetValue "cart.items.1.name", "Magic Mouse"
+json.SetValue "cart.items.1.price", 699.99
+json.SetValue "cart.items.1.quantity", 2
+
+' Sepet toplamları hesapla
+Dim totalAmount, i
+totalAmount = 0
+For i = 0 To 1
+    quantity = json.GetValue("cart.items." & i & ".quantity", 0)
+    price = json.GetValue("cart.items." & i & ".price", 0)
+    totalAmount = totalAmount + (quantity * price)
+Next
+
+json.SetValue "cart.totals.subtotal", totalAmount
+json.SetValue "cart.totals.tax", totalAmount * 0.18
+json.SetValue "cart.totals.total", totalAmount * 1.18
+
+' Sepet göster
+Response.Write "&lt;h4&gt;🛒 Alışveriş Sepeti&lt;/h4&gt;"
+For i = 0 To 1
+    productName = json.GetValue("cart.items." & i & ".name", "")
+    quantity = json.GetValue("cart.items." & i & ".quantity", 0)
+    price = json.GetValue("cart.items." & i & ".price", 0)
+    Response.Write "• " & productName & " (x" & quantity & ") - " & FormatCurrency(price * quantity) & "&lt;br&gt;"
+Next
+Response.Write "&lt;strong&gt;Toplam: " & FormatCurrency(json.GetValue("cart.totals.total", 0)) & "&lt;/strong&gt;"
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>E-commerce sepet sistemi. Ürün ekleme, toplam hesaplama, session yönetimi.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Session-based cart storage</li>
+                            <li>Dynamic price calculation</li>
+                            <li>Tax & total management</li>
+                            <li>Product quantity handling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2. API Response Builder</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' API Response oluştur
+Set json = CreateRabbitJSON()
+json.Parse("{}")
+
+' Response metadata
+json.SetValue "status", "success"
+json.SetValue "message", "Data retrieved successfully"
+json.SetValue "timestamp", Now()
+json.SetValue "version", "2.1.1"
+
+' User data ekle
+json.SetValue "data.users.0.id", 1001
+json.SetValue "data.users.0.username", "john_doe"
+json.SetValue "data.users.0.email", "john@example.com"
+json.SetValue "data.users.0.role", "admin"
+json.SetValue "data.users.0.lastLogin", "2025-01-20"
+
+json.SetValue "data.users.1.id", 1002
+json.SetValue "data.users.1.username", "jane_smith"
+json.SetValue "data.users.1.email", "jane@example.com"
+json.SetValue "data.users.1.role", "user"
+json.SetValue "data.users.1.lastLogin", "2025-01-19"
+
+' Pagination bilgisi
+json.SetValue "meta.totalCount", 245
+json.SetValue "meta.currentPage", 1
+json.SetValue "meta.perPage", 10
+json.SetValue "meta.totalPages", 25
+
+' JSON response'u oluştur
+Response.ContentType = "application/json"
+Response.Write json.StringifyCompact(json.Data)
+
+' Debug için HTML output (production'da remove et)
+Response.Write "&lt;br&gt;&lt;h4&gt;🔍 Debug Output:&lt;/h4&gt;"
+Response.Write "&lt;pre&gt;" & json.Stringify(json.Data, 2) & "&lt;/pre&gt;"
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>REST API endpoint'leri için standart JSON response format'ı oluşturur.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Standard API response structure</li>
+                            <li>Response.ContentType ayarla</li>
+                            <li>Pagination metadata</li>
+                            <li>Error handling patterns</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3. Configuration Management</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Environment-based config
+Set json = CreateRabbitJSON()
+json.Parse("{}")
+
+' Environment detect (örnek)
+Dim currentEnv
+currentEnv = "development"  ' production'da farklı logic
+
+' Base settings
+json.SetValue "app.name", "RabbitJSON Application"
+json.SetValue "app.version", "2.1.1"
+
+' Environment-specific
+If currentEnv = "development" Then
+    json.SetValue "database.host", "localhost"
+    json.SetValue "database.name", "myapp_dev"
+    json.SetValue "debug.enabled", True
+    json.SetValue "cache.enabled", False
+ElseIf currentEnv = "production" Then
+    json.SetValue "database.host", "prod-server.com"
+    json.SetValue "database.name", "myapp_prod"
+    json.SetValue "debug.enabled", False
+    json.SetValue "cache.enabled", True
+End If
+
+' Security settings
+json.SetValue "security.sessionTimeout", 30
+json.SetValue "security.maxLoginAttempts", 5
+
+' Feature flags
+json.SetValue "features.newDashboard", True
+json.SetValue "features.betaFeatures", (currentEnv &lt;&gt; "production")
+
+' Application-level'da sakla
+Application("AppConfig") = json.StringifyCompact(json.Data)
+
+Response.Write "&lt;h4&gt;⚙️ " & UCase(currentEnv) & " Configuration&lt;/h4&gt;"
+Response.Write "&lt;pre&gt;" & json.Stringify(json.Data, 2) & "&lt;/pre&gt;"
+
+' Kullanım örneği
+Response.Write "&lt;h5&gt;📖 Config Kullanımı:&lt;/h5&gt;"
+Response.Write "Database Host: " & json.GetValue("database.host", "") & "&lt;br&gt;"
+Response.Write "Debug Mode: " & json.GetValue("debug.enabled", False) & "&lt;br&gt;"
+Response.Write "Cache: " & IIf(json.GetValue("cache.enabled", False), "Enabled", "Disabled")
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>Çoklu environment için dinamik konfigürasyon yönetimi sağlar.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Environment detection</li>
+                            <li>Feature flag management</li>
+                            <li>Application-level storage</li>
+                            <li>Conditional configuration</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UTİLİTY METHODS BÖLÜMÜ -->
+            <section id="utility-examples" class="section">
+                <h2>🛠️ Utility Methods & Advanced Usage</h2>
+                
+                <h3>1. Error Handling & Debugging</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+Set json = CreateRabbitJSON()
+
+' Error test scenarios
+Dim testCases(3)
+testCases(0) = "{""valid"": ""json""}"        ' Valid
+testCases(1) = "{invalid json}"               ' Invalid syntax
+testCases(2) = ""                             ' Empty
+testCases(3) = "https://invalid-url.com"     ' Invalid URL
+
+Response.Write "&lt;h4&gt;🧪 Error Handling Tests&lt;/h4&gt;"
+
+For i = 0 To 3
+    Response.Write "&lt;h5&gt;Test " & (i+1) & ":&lt;/h5&gt;"
+    
+    Set result = json.Parse(testCases(i))
+    
+    If result Is Nothing Then
+        Response.Write "&lt;div style='color:red; border:1px solid red; padding:10px'&gt;"
+        Response.Write "❌ Error: " & json.LastError
+        Response.Write "&lt;/div&gt;"
+        json.ClearError()
+    Else
+        Response.Write "&lt;div style='color:green; border:1px solid green; padding:10px'&gt;"
+        Response.Write "✅ Success! Items: " & json.Count
+        Response.Write "&lt;/div&gt;"
+    End If
+    Response.Write "&lt;br&gt;"
+Next
+
+' HasError test
+json.Parse("{invalid}")
+If json.HasError() Then
+    Response.Write "&lt;p&gt;Error detected: " & json.LastError & "&lt;/p&gt;"
+    json.ClearError()
+    Response.Write "&lt;p&gt;Error cleared successfully!&lt;/p&gt;"
+End If
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON parse hatalarını yakalayıp güvenli bir şekilde yönetir.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>Her Parse() sonrası Nothing kontrolü</li>
+                            <li>LastError ile hata detayları</li>
+                            <li>ClearError() ile reset</li>
+                            <li>HasError() ile durum kontrolü</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2. Data Validation & Type Checking</h3>
+                <div class="example-container">
+                    <div class="example-code">
+&lt;%
+' Sample user data validate et
+Set json = CreateRabbitJSON()
+json.Parse("{""user"":{""name"":""John"",""age"":30,""email"":""john@test.com"",""active"":true}}"
+
+' Validation rules
+Response.Write "&lt;h4&gt;✅ Data Validation Results&lt;/h4&gt;"
+
+' Required fields check
+requiredFields = Array("user.name", "user.email", "user.age")
+allValid = True
+
+For Each field In requiredFields
+    If json.HasValue(field) Then
+        value = json.GetValue(field, "")
+        If value &lt;&gt; "" And Not IsNull(value) Then
+            Response.Write "✅ " & field & ": " & value & "&lt;br&gt;"
+        Else
+            Response.Write "❌ " & field & ": Empty or null&lt;br&gt;"
+            allValid = False
+        End If
+    Else
+        Response.Write "❌ " & field & ": Missing&lt;br&gt;"
+        allValid = False
+    End If
+Next
+
+' Type validation
+age = json.GetValue("user.age", 0)
+If IsNumeric(age) And age &gt; 0 And age &lt; 120 Then
+    Response.Write "✅ Age validation: Valid (" & age & ")&lt;br&gt;"
+Else
+    Response.Write "❌ Age validation: Invalid&lt;br&gt;"
+    allValid = False
+End If
+
+' Email validation (basit)
+email = json.GetValue("user.email", "")
+If InStr(email, "@") &gt; 0 And InStr(email, ".") &gt; 0 Then
+    Response.Write "✅ Email validation: Valid (" & email & ")&lt;br&gt;"
+Else
+    Response.Write "❌ Email validation: Invalid&lt;br&gt;"
+    allValid = False
+End If
+
+Response.Write "&lt;br&gt;&lt;strong&gt;Overall Result: "
+If allValid Then
+    Response.Write "&lt;span style='color:green'&gt;✅ All validations passed&lt;/span&gt;"
+Else
+    Response.Write "&lt;span style='color:red'&gt;❌ Some validations failed&lt;/span&gt;"
+End If
+Response.Write "&lt;/strong&gt;"
+%&gt;
+                    </div>
+                    <div class="example-explanation">
+                        <h4>🎯 Ne İşe Yarar?</h4>
+                        <p>JSON verilerinde data validation ve type checking yapar.</p>
+                        <h4>🚀 Nasıl Kullanılır?</h4>
+                        <ul>
+                            <li>HasValue() ile field existence</li>
+                            <li>Type validation (IsNumeric, etc.)</li>
+                            <li>Business rule validation</li>
+                            <li>Batch validation loops</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PERFORMANS VE İPUÇLARI -->
+            <section id="performance-tips" class="section">
+                <h2>⚡ Performans İpuçları & Best Practices</h2>
+                
+                <div class="info-box warning">
+                    <h4>💡 Performans İpuçları</h4>
+                    <ul>
+                        <li><strong>StringifyCompact() kullan:</strong> Network transferleri için kompakt format tercih et</li>
+                        <li><strong>Application-level cache:</strong> Büyük JSON'ları Application("key") ile cache'le</li>
+                        <li><strong>Lazy loading:</strong> Büyük array'lerde sadece gerekli indexleri yükle</li>
+                        <li><strong>Error handling:</strong> Her Parse() sonrası Nothing kontrolü yap</li>
+                        <li><strong>Memory management:</strong> Büyük objeler için Set obj = Nothing kullan</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>✅ Best Practices</h4>
+                    <ul>
+                        <li><strong>Consistent naming:</strong> camelCase veya snake_case konvansiyonu belirle</li>
+                        <li><strong>Default values:</strong> GetValue() ile her zaman default değer ver</li>
+                        <li><strong>API versioning:</strong> JSON response'larında version bilgisi ekle</li>
+                        <li><strong>Content-Type:</strong> API endpoint'lerinde "application/json" header'ı kullan</li>
+                        <li><strong>Security:</strong> User input'u validate et, XSS koruması yap</li>
+                    </ul>
+                </div>
+
+                <div class="info-box info">
+                    <h4>📚 Sık Kullanılan Patterns</h4>
+                    <ul>
+                        <li><strong>Config management:</strong> Environment-based ayarlar için</li>
+                        <li><strong>API responses:</strong> Standard response format (status, data, meta)</li>
+                        <li><strong>Session storage:</strong> Complex data'yı session'da JSON olarak sakla</li>
+                        <li><strong>Logging:</strong> Structured logging için JSON format kullan</li>
+                        <li><strong>Cache keys:</strong> JSON hash'i ile cache key oluştur</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

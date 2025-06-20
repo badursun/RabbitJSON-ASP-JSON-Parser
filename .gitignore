@@ -1,0 +1,101 @@
+# Site File 
+index.html
+assets/
+
+# IDE ve Editor ayarları
+.vscode/
+.vs/
+*.code-workspace
+.idea/
+*.sublime-project
+*.sublime-workspace
+web.config
+
+# AI ve geliştirme notları
+.ai-todos/
+AI_NOTES/
+dev-notes/
+temp/
+temporary/
+scratch/
+
+# Backup dosyaları
+*.bak
+*.backup
+*.tmp
+*~
+.DS_Store
+Thumbs.db
+
+# Log dosyaları
+*.log
+logs/
+debug.log
+error.log
+
+# Test dosyaları (eğer test klasörü varsa)
+test-output/
+test-results/
+coverage/
+
+# Node.js (eğer varsa)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache dosyaları
+.cache/
+*.cache
+
+# Kişisel notlar
+personal-notes/
+private/
+confidential/
+
+# Temporary ASP dosyaları
+debug-*.asp
+test-*.asp
+temp-*.asp
+*-test.asp
+*-tests.asp
+
+# Build artifacts (eğer varsa)
+build/
+dist/
+out/
+
+# Environment dosyaları
+.env
+.env.local
+.env.production
+config.local.*
+
+# ZIP/Archive dosyaları
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Office geçici dosyaları
+~$*
+*.tmp
+
+# Windows
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent 

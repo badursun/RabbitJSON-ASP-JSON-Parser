@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🐰 RabbitJSON v2.1.1 - Comprehensive Demo</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .container { max-width: 1400px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .header { text-align: center; color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 25px; border-radius: 10px; }
+        h1 { color: #2c3e50; margin: 0; }
+        h2 { color: #34495e; margin-top: 30px; border-bottom: 2px solid #bdc3c7; padding-bottom: 10px; }
+        h3 { color: #7f8c8d; }
+        .demo-section { margin: 25px 0; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #fafbfc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .info-box { padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .success { background: #d5f4e6; border-left: 5px solid #27ae60; color: #155724; }
+        .error { background: #fadbd8; border-left: 5px solid #e74c3c; color: #721c24; }
+        .warning { background: #fef9e7; border-left: 5px solid #f39c12; color: #856404; }
+        .info { background: #d1ecf1; border-left: 5px solid #17a2b8; color: #0c5460; }
+        .performance { background: #e7f3ff; border-left: 5px solid #007bff; color: #0056b3; }
+        .code { font-family: 'Courier New', monospace; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #bdc3c7; }
+        th { background: #34495e; color: white; font-weight: bold; }
+        .metric { display: inline-block; margin: 10px; padding: 15px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; border-radius: 8px; min-width: 120px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .null { color: #95a5a6; font-style: italic; }
+        .number { color: #e67e22; font-weight: bold; }
+        .boolean { color: #9b59b6; font-weight: bold; }
+        .string { color: #27ae60; }
+        .url { color: #3498db; text-decoration: underline; word-break: break-all; }
+        .tabs { display: flex; margin-bottom: 20px; }
+        .tab { padding: 12px 20px; background: #ecf0f1; border: 1px solid #bdc3c7; cursor: pointer; border-radius: 8px 8px 0 0; margin-right: 5px; }
+        .tab.active { background: #3498db; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+    </style>
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            var contents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Show selected tab content and mark tab as active
+            document.getElementById(tabName + '-content').classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐰 RabbitJSON v2.1.1 - Comprehensive Demo</h1>
+            <p><strong>All-in-One JSON Processing Demonstration</strong></p>
+            <p>File Loading • HTTP Loading • Path Access • Serialization • Performance</p>
+        </div>
+
+        
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <div class="tab active" id="file-tab" onclick="showTab('file')">📁 File Loading</div>
+            <div class="tab" id="http-tab" onclick="showTab('http')">🌐 HTTP Loading</div>
+            <div class="tab" id="analysis-tab" onclick="showTab('analysis')">📊 Data Analysis</div>
+            <div class="tab" id="performance-tab" onclick="showTab('performance')">⚡ Performance</div>
+        </div>
+
+        <!-- Tab 1: File Loading Demo -->
+        <div id="file-content" class="tab-content active">
+            <div class="demo-section">
+                <h2>📁 JSON File Loading Demonstration</h2>
+                
+                <div class='info-box success'><h3>✅ File Loading & Parse Success</h3><strong>File:</strong> sample-data.json<br><strong>Size:</strong> <span class='number'>7.803</span> characters<br><strong>Load Time:</strong> <span class='number'>0,00</span>ms<br><strong>Parse Time:</strong> <span class='number'>187,50</span>ms<br><strong>Root Sections:</strong> <span class='number'>8</span><br><strong>Data Verification:</strong> <span class='string'>RabbitCMS Technology</span></div>
+                
+                <!-- Quick Data Preview -->
+                
+                <div class="info-box info">
+                    <h4>📋 Quick Data Preview</h4>
+                    <p><strong>Company:</strong> <span class='string'>RabbitCMS Technology</span></p>
+                    <p><strong>Employees:</strong> <span class='number'>250</span></p>
+                    <p><strong>Founded:</strong> <span class='number'>2020</span></p>
+                    <p><strong>Location:</strong> <span class='string'>Istanbul, Turkey</span></p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Tab 2: HTTP Loading Demo -->
+        <div id="http-content" class="tab-content">
+            <div class="demo-section">
+                <h2>🌐 HTTP URL Loading Demonstration</h2>
+                
+                <!-- Test 1: JSONPlaceholder API -->
+                <h3>🔗 Test 1: JSONPlaceholder API</h3>
+                <div class='info-box success'><h4>✅ SUCCESS - JSONPlaceholder API</h4><strong>URL:</strong> <span class='url'>https://jsonplaceholder.typicode.com/posts/1</span><br><strong>Response Time:</strong> <span class='number'>109,38</span>ms<br><strong>Data Keys:</strong> <span class='number'>4</span></div><table><tr><th>Field</th><th>Value</th></tr><tr><td>Post ID</td><td class='number'>1</td></tr><tr><td>User ID</td><td class='number'>1</td></tr><tr><td>Title</td><td class='string'>sunt aut facere repellat provident occaecati excepturi optio...</td></tr><tr><td>Body Length</td><td class='number'>164 chars</td></tr></table>
+                
+                <!-- Test 2: GitHub API -->
+                <h3>🔗 Test 2: GitHub API</h3>
+                <div class='info-box success'><h4>✅ SUCCESS - GitHub API</h4><strong>URL:</strong> <span class='url'>https://api.github.com/users/octocat</span><br><strong>Response Time:</strong> <span class='number'>281,25</span>ms<br><strong>Data Keys:</strong> <span class='number'>33</span></div><table><tr><th>Field</th><th>Value</th></tr><tr><td>Username</td><td class='string'>octocat</td></tr><tr><td>Name</td><td class='string'>The Octocat</td></tr><tr><td>Public Repos</td><td class='number'>8</td></tr><tr><td>Followers</td><td class='number'>18.369</td></tr><tr><td>Following</td><td class='number'>9</td></tr></table>
+                
+                <!-- Backward Compatibility Test -->
+                <h3>📄 Test 3: Backward Compatibility (JSON String)</h3>
+                <div class='info-box success'><h4>✅ SUCCESS - Backward Compatibility</h4><strong>Input:</strong> Direct JSON String<br><strong>Parse Time:</strong> <span class='number'>0,00</span>ms<br><strong>Features:</strong> URL detection did not interfere with JSON parsing</div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Data Analysis -->
+        <div id="analysis-content" class="tab-content">
+            
+            <div class="demo-section">
+                <h2>📊 Comprehensive Data Analysis</h2>
+                
+                <!-- Company Analysis -->
+                <h3>🏢 Company Information</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>RabbitCMS Technology</h4>
+                        <p>Company</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>250</h4>
+                        <p>Employees</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>2020</h4>
+                        <p>Founded</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Istanbul</h4>
+                        <p>Headquarters</p>
+                    </div>
+                </div>
+                
+                <!-- Products Analysis -->
+                <h3>📦 Products Portfolio</h3>
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Downloads</th>
+                        <th>Rating</th>
+                        <th>Open Source</th>
+                    </tr>
+                    <tr><td class='string'>N/A</td><td class='string'>N/A</td><td class='number'>$0</td><td class='number'>0</td><td class='number'>0/5</td><td class='boolean'>False</td></tr><tr><td class='string'>N/A</td><td class='string'>N/A</td><td class='number'>$0</td><td class='number'>0</td><td class='number'>0/5</td><td class='boolean'>False</td></tr>
+                </table>
+                
+                <!-- Analytics Dashboard -->
+                <h3>📈 Analytics Dashboard</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>2.847</h4>
+                        <p>Daily Visitors</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>67.892</h4>
+                        <p>Monthly Visitors</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>145.623</h4>
+                        <p>Page Views</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>32,0%</h4>
+                        <p>Bounce Rate</p>
+                    </div>
+                </div>
+                
+                <!-- Geographic Distribution -->
+                <h4>🌍 Geographic Distribution</h4>
+                <table>
+                    <tr>
+                        <th>Country</th>
+                        <th>Percentage</th>
+                        <th>Visitors</th>
+                    </tr>
+                    <tr><td class='string'>N/A</td><td class='number'>0%</td><td class='number'>0</td></tr><tr><td class='string'>N/A</td><td class='number'>0%</td><td class='number'>0</td></tr><tr><td class='string'>N/A</td><td class='number'>0%</td><td class='number'>0</td></tr><tr><td class='string'>N/A</td><td class='number'>0%</td><td class='number'>0</td></tr><tr><td class='string'>N/A</td><td class='number'>0%</td><td class='number'>0</td></tr>
+                </table>
+                
+                <!-- System Information -->
+                <h3>🖥️ System Information</h3>
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr><td>Operating System</td><td class='string'>Windows Server 2022</td></tr>
+                    <tr><td>IIS Version</td><td class='string'>10.0</td></tr>
+                    <tr><td>ASP Version</td><td class='string'>3.0</td></tr>
+                    <tr><td>VBScript Version</td><td class='string'>5.8</td></tr>
+                    <tr><td>CPU Model</td><td class='string'>Intel Xeon Gold 6248R</td></tr>
+                    <tr><td>CPU Cores</td><td class='number'>24</td></tr>
+                    <tr><td>Total Memory</td><td class='string'>32 GB</td></tr>
+                    <tr><td>Available Memory</td><td class='string'>18.5 GB</td></tr>
+                </table>
+                
+                <!-- Special Data Types -->
+                <h3>🧪 Special Data Types Testing</h3>
+                <div class="info-box info">
+                    <p><strong>Unicode:</strong> <span class='string'>Testing çöğüı ÇÖĞÜŞI áéíóú ÁÉÍÓÚ àèìòù ÀÈÌÒÙ âêîôû ÂÊÎÔÛ</span></p>
+                    <p><strong>Emojis:</strong> <span class='string'>🐰🚀📊💡🎯✅❌⚡🔧📈</span></p>
+                    <p><strong>Large Number:</strong> <span class='number'></span></p>
+                    <p><strong>Scientific:</strong> <span class='number'>0,000123</span></p>
+                    <p><strong>Boolean True:</strong> <span class='boolean'>True</span></p>
+                    <p><strong>Boolean False:</strong> <span class='boolean'>false
+</span></p>
+                    <p><strong>Null Value:</strong> <span class='null'>null (correctly parsed)</span></p>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Tab 4: Performance Analysis -->
+        <div id="performance-content" class="tab-content">
+            
+            <div class="demo-section">
+                <h2>⚡ Performance Analysis & Benchmarks</h2>
+                
+                <!-- Performance Summary -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>656,25ms</h4>
+                        <p>Total Demo Time</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h4>0,00ms</h4>
+                        <p>File Load Time</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h4>109,38ms</h4>
+                        <p>API 1 Response</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h4>281,25ms</h4>
+                        <p>API 2 Response</p>
+                    </div>
+                    
+                </div>
+                
+                <!-- Detailed Performance Table -->
+                <h3>📊 Detailed Performance Metrics</h3>
+                <table>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Time (ms)</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>File Loading</td>
+                        <td class='number'>0,00</td>
+                        <td class='success'>✅ Success</td>
+                        <td>7.803 characters</td>
+                    </tr>
+                    <tr>
+                        <td>File Parsing</td>
+                        <td class='number'>187,50</td>
+                        <td class='success'>✅ Success</td>
+                        <td>JSON structure analysis</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>HTTP API 1</td>
+                        <td class='number'>109,38</td>
+                        <td class='success'>✅ Success</td>
+                        <td>JSONPlaceholder API</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>HTTP API 2</td>
+                        <td class='number'>281,25</td>
+                        <td class='success'>✅ Success</td>
+                        <td>GitHub API</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>JSON String Parse</td>
+                        <td class='number'>0,00</td>
+                        <td class='success'>✅ Success</td>
+                        <td>Backward compatibility</td>
+                    </tr>
+                    
+                </table>
+                
+                <!-- Performance Insights -->
+                <div class="info-box performance">
+                    <h4>🔍 Performance Insights</h4>
+                    
+                    <p><strong>Parse Speed:</strong> <span class='number'>42</span> characters/ms</p>
+                    
+                    <p><strong>Memory Usage:</strong> Automatic cleanup enabled</p>
+                    <p><strong>Error Handling:</strong> Comprehensive error detection</p>
+                    <p><strong>URL Detection:</strong> Smart HTTP/HTTPS recognition</p>
+                </div>
+                
+                <!-- Code Examples -->
+                <h3>💻 Usage Code Examples</h3>
+                <div class="code">
+<strong>RabbitJSON v2.1.1 Usage Examples:</strong>
+
+' File Loading Example
+Set json = CreateRabbitJSON()
+Set data = json.Parse("sample-data.json")  ' File path
+companyName = json.GetValue("company.name", "")
+
+' HTTP URL Loading Example  
+Set apiData = json.Parse("https://api.github.com/users/octocat")  ' HTTP URL
+username = json.GetValue("login", "")
+
+' Regular JSON String (Backward Compatible)
+Set localData = json.Parse("{""key"":""value""}")  ' JSON string
+value = json.GetValue("key", "")
+
+' Path-based Data Access
+employeeCount = json.GetValue("company.employees", 0)
+latitude = json.GetValue("company.headquarters.address.coordinates.latitude", 0)
+firstProductName = json.GetValue("products.0.name", "")
+
+' Data Manipulation
+json.SetValue "demo.timestamp", Now()
+json.SetValue "demo.processed", True
+hasValue = json.HasValue("analytics.traffic")
+
+' Serialization
+compactJson = json.StringifyCompact(json.Data)
+formattedJson = json.Stringify(json.Data, 2)
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="demo-section">
+            <div class="info-box success">
+                <h3>🎉 RabbitJSON v2.1.1 - Comprehensive Demo Complete!</h3>
+                <p><strong>Demonstrated Features:</strong></p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div>
+                        <strong>✅ Core Features:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>JSON file loading</li>
+                            <li>HTTP URL loading</li>
+                            <li>Path-based data access</li>
+                            <li>Data serialization</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>✅ Data Types:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>String, Number, Boolean</li>
+                            <li>Null values</li>
+                            <li>Objects and Arrays</li>
+                            <li>Unicode support</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>✅ Performance:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>Fast parsing engine</li>
+                            <li>Memory efficient</li>
+                            <li>Error handling</li>
+                            <li>Auto cleanup</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="margin-top: 15px;"><strong>Total Demo Time:</strong> <span class='number'>656,25ms</span></p>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        // Auto-activate first tab
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('file');
+        });
+    </script>
+</body>
+</html> 
