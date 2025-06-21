@@ -1,6 +1,8 @@
 # Site File 
 index.html
 assets/
+code-reader.asp
+test-suits/
 
 # IDE ve Editor ayarları
 .vscode/
