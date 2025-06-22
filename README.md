@@ -1,192 +1,206 @@
-# 🐇 RabbitJSON - En Gelişmiş Classic ASP JSON Parser
+# 🐇 RabbitJSON - The Most Advanced Classic ASP JSON Parser
 
-> 🚀 **Daha hızlı, daha akıllı, daha temiz.** RabbitJSON, Classic ASP için modern, yüksek performanslı JSON parser'dır — aspJSON.com ve rcdmk/aspJSON gibi eski ve hatalı alternatifleri tamamen geride bırakır.
-
----
-
-## 🌟 Neden RabbitJSON?
-
-Classic ASP'de JSON verisiyle çalışmak artık çile değil! Mevcut çözümlerin çoğu ya güncellenmiyor ya da modern JSON yapılarıyla bozuluyor. RabbitJSON, tüm bu sorunları çözüyor:
-
-✅ **Path-based** veri erişimi (`user.profile.settings.theme`)  
-✅ **HTTP/HTTPS** üzerinden doğrudan JSON yükleme  
-✅ **Unicode**, emoji ve bilimsel sayı tam desteği  
-✅ **Configuration system** - maxDepth, strictMode ayarları  
-✅ **Default value support** - güvenli veri erişimi  
-✅ **Gelişmiş hata yönetimi** - HasError(), LastError, ClearError()  
-✅ **Stringify** & kompakt stringify özellikleri  
-✅ **Kapsamlı test yapısı** ve gerçek zamanlı performans ölçümü  
-✅ **Sıfır dış bağımlılık** - sadece Classic ASP  
-✅ **Sadece 41 KB** boyut (sıkıştırılmamış)
+> 🚀 **Faster, smarter, cleaner.** RabbitJSON is a modern, high-performance JSON parser for Classic ASP — fully surpassing outdated and buggy alternatives like aspJSON.com and rcdmk/aspJSON.
 
 ---
 
-## 📊 Benchmark Karşılaştırması
+## 🌟 Why RabbitJSON?
 
-Aşağıdaki tablo, gerçek zamanlı testler ve performans ölçümlerine dayanmaktadır:
+Working with JSON data in Classic ASP is no longer a nightmare! Most existing solutions are either outdated or break with modern JSON structures. RabbitJSON solves all these issues:
 
-| Test Kategorisi            | RabbitJSON   | [rcdmk/aspJSON](https://github.com/rcdmk/aspJSON) | [gerritvankuipers/aspjson](https://github.com/gerritvankuipers/aspjson)  |
-|----------------------------|-----------------|------------------|--------------|
-| **Yerel JSON Parse**       | ✅ ~150ms        | ✅ ~200ms         | ✅ ~180ms     |
-| **HTTP JSON Yükleme**      | ✅ ~500ms        | ❌ Desteklenmiyor | ❌ Desteklenmiyor |
-| **Path Tabanlı Erişim**    | ✅ `a.b[0].c`    | ❌ Manuel kod     | ❌ Manuel kod |
-| **Unicode Desteği**        | ✅ Tam destek    | ❌ Sınırlı        | ❌ Kısmi      |
-| **Emoji Desteği**          | ✅ Mükemmel      | ❌ Desteklenmiyor | ❌ Hatalı     |
-| **Stringify**              | ✅ Gelişmiş      | ✅ Basit          | ✅ Basit      |
-| **Kompakt Stringify**      | ✅ Optimize      | ❌ Yok            | ❌ Yok        |
-| **Hata Yönetimi**          | ✅ Kapsamlı      | ❌ Minimal        | ❌ Yetersiz   |
-| **Bellek Yönetimi**        | ✅ Otomatik      | ❌ Manuel         | ❓ Belirsiz   |
-| **Dosya Boyutu**           | ✅ 41 KB         | ~25 KB           | ~9.52 KB       |
+✅ **Path-based** data access (`user.profile.settings.theme`)
+✅ Load JSON directly from **HTTP/HTTPS**
+✅ Full support for **Unicode**, emojis, and scientific notation
+✅ **Configuration system** - set `maxDepth`, `strictMode`
+✅ **Default value support** - safe data access
+✅ **Advanced error handling** - `HasError()`, `LastError`, `ClearError()`
+✅ **Stringify** & compact stringify support
+✅ **Comprehensive test coverage** and real-time benchmarking
+✅ **Zero dependencies** - pure Classic ASP
+✅ Only **41 KB** (uncompressed)
 
 ---
 
-## 🧪 Test Sistemi
+## 📊 Benchmark Comparison
 
-RabbitJSON, şeffaf ve kapsamlı test sistemiyle gelir. İki ana test türümüz var:
+Below is a real-world performance comparison:
 
-### 📈 1. Kapsamlı Fonksiyon Testleri
-**104 farklı test senaryosu** ile tüm fonksiyonları test eder:
-
-- **Test Kodunu Gör:** [comprehensive-test.asp.txt](https://rabbitjson.com/v2/test/comprehensive-test.asp.txt)
-- **Son Test Sonucu:** [comprehensive-test.html](https://rabbitjson.com/v2/test/comprehensive-test.html)
-
-### ⚡ 2. Performans & Yük Testleri
-**Gerçek zamanlı performans** ölçümü ve büyük veri testleri:
-
-- **Test Kodunu Gör:** [load-test.asp.txt](https://rabbitjson.com/v2/test/load-test.asp.txt)
-- **Son Test Sonucu:** [load-test.html](https://rabbitjson.com/v2/test/load-test.html)
-
-### 📄 Test Verisi
-- **Örnek JSON:** [sample-data.json](https://rabbitjson.com/tests/sample-data.json) (7.6 KB, gerçek e-ticaret verisi)
+| Test Category         | RabbitJSON      | [rcdmk/aspJSON](https://github.com/rcdmk/aspJSON) | [gerritvankuipers/aspjson](https://github.com/gerritvankuipers/aspjson) |
+| --------------------- | --------------- | ------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Local JSON Parse**  | ✅ \~150ms       | ✅ \~200ms                                         | ✅ \~180ms                                                               |
+| **HTTP JSON Loading** | ✅ \~500ms       | ❌ Not supported                                   | ❌ Not supported                                                         |
+| **Path-based Access** | ✅ `a.b[0].c`    | ❌ Manual code                                     | ❌ Manual code                                                           |
+| **Unicode Support**   | ✅ Full          | ❌ Limited                                         | ❌ Partial                                                               |
+| **Emoji Support**     | ✅ Excellent     | ❌ None                                            | ❌ Buggy                                                                 |
+| **Stringify**         | ✅ Advanced      | ✅ Basic                                           | ✅ Basic                                                                 |
+| **Compact Stringify** | ✅ Optimized     | ❌ None                                            | ❌ None                                                                  |
+| **Error Handling**    | ✅ Comprehensive | ❌ Minimal                                         | ❌ Poor                                                                  |
+| **Memory Management** | ✅ Automatic     | ❌ Manual                                          | ❓ Unknown                                                               |
+| **File Size**         | ✅ 41 KB         | \~25 KB                                           | \~9.52 KB                                                               |
 
 ---
 
-## ✨ Öne Çıkan Özellikler
+## 🧪 Test System
 
-### 🔹 JSON Path Erişimi
+RabbitJSON comes with a transparent and robust testing system. Two main test types:
+
+### 📈 1. Comprehensive Function Tests
+
+**104 unique test scenarios** validate all core features:
+
+* **View Test Code:** [comprehensive-test.asp.txt](https://rabbitjson.com/v2/test/comprehensive-test.asp.txt)
+* **Live Test Result:** [comprehensive-test.html](https://rabbitjson.com/v2/test/comprehensive-test.html)
+
+### ⚡ 2. Performance & Load Tests
+
+**Real-time performance** benchmarking with large data:
+
+* **View Test Code:** [load-test.asp.txt](https://rabbitjson.com/v2/test/load-test.asp.txt)
+* **Live Test Result:** [load-test.html](https://rabbitjson.com/v2/test/load-test.html)
+
+### 📄 Test Data
+
+* **Sample JSON:** [sample-data.json](https://rabbitjson.com/tests/sample-data.json) (7.6 KB real e-commerce data)
+
+---
+
+## ✨ Key Features
+
+### 🔹 JSON Path Access
+
 ```asp
 Set json = New RabbitJSON
-json.Parse "{""users"":[{""name"":""Ahmet"",""age"":25},{""name"":""Ayşe"",""age"":30}]}"
-Response.Write json.GetValue("users.0.name")  ' Çıktı: Ahmet
-Response.Write json.GetValue("users.1.name")  ' Çıktı: Ayşe
+json.Parse "{""users"": [{""name"": ""Ahmet"", ""age"": 25}, {""name"": ""Ayşe"", ""age"": 30}]}"
+Response.Write json.GetValue("users.0.name")  ' Output: Ahmet
+Response.Write json.GetValue("users.1.name")  ' Output: Ayşe
 ```
 
-### 🔹 HTTP/HTTPS JSON Yükleme
+### 🔹 HTTP/HTTPS JSON Loading
+
 ```asp
 Set json = New RabbitJSON
 json.Parse "https://jsonplaceholder.typicode.com/users/1"
-Response.Write json.GetValue("name")  ' API'den direkt veri
+Response.Write json.GetValue("name")  ' Fetched directly from API
 ```
 
-### 🔹 Unicode & Emoji Tam Desteği
+### 🔹 Full Unicode & Emoji Support
+
 ```asp
-' Bu karakterler sorunsuz çalışır: ş, ğ, ü, ı, ö, ç, €, 😊, 🚀, 🐇
-json.Parse "{""mesaj"":""Merhaba 🐇 RabbitJSON! 😊""}"
+' These characters work flawlessly: ş, ğ, ü, ı, ö, ç, €, 😊, 🚀, 🐇
+json.Parse "{\"message\":\"Hello 🐇 RabbitJSON! 😊\"}"
 ```
 
-### 🔹 Gelişmiş Stringify
+### 🔹 Advanced Stringify
+
 ```asp
-' Okunabilir format
+' Readable format
 jsonString = json.Stringify(data, 2)
 
-' Kompakt format (bandwidth tasarrufu)
+' Compact format (bandwidth saving)
 compactJson = json.StringifyCompact(data)
 ```
 
-### 🔹 Gelişmiş Hata Yönetimi & Configuration
+### 🔹 Error Handling & Configuration
+
 ```asp
 Set json = New RabbitJSON
-' Konfigürasyon ayarları
 json.Config("maxDepth") = 50
 json.Config("strictMode") = True
 
 json.Parse invalidJsonString
 If json.HasError() Then
-    Response.Write "Parse Hatası: " & json.LastError
+    Response.Write "Parse Error: " & json.LastError
     json.ClearError()
 End If
 ```
 
-### 🔹 Default Değer Desteği
+### 🔹 Default Value Support
+
 ```asp
 Set json = New RabbitJSON
-json.Parse "{""user"":{""name"":""Mehmet""}}"
-' Güvenli erişim - yoksa default değer döner
-userName = json.GetValue("user.name", "Bilinmiyor")
+json.Parse "{\"user\":{\"name\":\"Mehmet\"}}"
+userName = json.GetValue("user.name", "Unknown")
 userAge = json.GetValue("user.age", 0)
-userPhone = json.GetValue("user.phone", "Belirtilmemiş")
+userPhone = json.GetValue("user.phone", "Not Provided")
 ```
 
 ---
 
-## 🛠️ Kurulum
+## 🛠️ Installation
 
-### 1. Dosyayı İndirin
-RabbitJSON'yi projenize dahil edin:
+### 1. Download File
+
+Include RabbitJSON in your project:
 
 ```asp
 <!--#include file="RabbitJSON.v2.asp" -->
 ```
 
-### 2. Kullanmaya Başlayın
+### 2. Start Using
+
 ```asp
 <%
 Set json = New RabbitJSON
-json.Parse "{""ad"":""Mehmet"",""yaş"":30}"
-Response.Write json.GetValue("ad", "")  ' Çıktı: Mehmet
+json.Parse "{\"name\":\"Mehmet\",\"age\":30}"
+Response.Write json.GetValue("name", "")  ' Output: Mehmet
 %>
 ```
 
 ---
 
-## 📚 API Dokümantasyonu
+## 📚 API Documentation
 
-> 📖 **Detaylı API Referansı:** [api.md](v2/api.md) - Tüm metodlar, parametreler ve örneklerle eksiksiz dokümantasyon
+> 📖 **Full API Reference:** [api.md](v2/api.md) — All methods, parameters, and examples included.
 
-### Temel Metodlar
-- `Parse(jsonString)` - JSON string'ini parse eder
-- `GetValue(path)` - Path ile veri alır (`user.profile.name`)
-- `SetValue(path, value)` - Path ile veri yazar
-- `Stringify(object, indent)` - Object'i JSON'a çevirir
-- `StringifyCompact(object)` - Kompakt JSON formatı
+### Core Methods
 
-### Utility Metodlar
-- `HasValue(path)` - Path'in varlığını kontrol eder
-- `RemoveValue(path)` - Path'deki veriyi siler
-- `GetKeys()` - Root level anahtarları listeler
-- `Clear()` - Tüm veriyi temizler
+* `Parse(jsonString)` - Parses a JSON string
+* `GetValue(path)` - Retrieves value using a path (e.g., `user.profile.name`)
+* `SetValue(path, value)` - Writes value to a path
+* `Stringify(object, indent)` - Converts object to JSON
+* `StringifyCompact(object)` - Compact JSON output
 
-### Factory Fonksiyonlar
-- `CreateRabbitJSON()` - Yeni RabbitJSON instance
-- `QuickParse(jsonString)` - Hızlı parse (static method)
-- `QuickStringify(object, indent)` - Hızlı stringify (static method)
+### Utility Methods
 
-### Gelişmiş Özellikler
-- `Config(key, value)` - Yapılandırma ayarları (`maxDepth`, `strictMode`)
-- `HasError()` - Hata durumu kontrolü
-- `LastError` - Son hata mesajı property'si
-- `ClearError()` - Hata durumunu temizle
-- `GetValue(path, defaultValue)` - Default değer desteği ile güvenli erişim
-- `GetValueSimple(path)` - Basit değer erişimi
-- `Version` - Sürüm bilgisi property'si
-- `Count` - Eleman sayısı property'si
+* `HasValue(path)` - Checks path existence
+* `RemoveValue(path)` - Deletes value at path
+* `GetKeys()` - Lists root keys
+* `Clear()` - Clears all data
+
+### Factory Functions
+
+* `CreateRabbitJSON()` - Returns a new RabbitJSON instance
+* `QuickParse(jsonString)` - Static quick parse method
+* `QuickStringify(object, indent)` - Static stringify method
+
+### Advanced Features
+
+* `Config(key, value)` - Configuration (`maxDepth`, `strictMode`)
+* `HasError()` - Checks for error state
+* `LastError` - Last error message property
+* `ClearError()` - Clears error state
+* `GetValue(path, defaultValue)` - Safe value access
+* `GetValueSimple(path)` - Simple value access
+* `Version` - Version info property
+* `Count` - Total element count property
 
 ---
 
-## 💡 Kullanım Senaryoları
+## 💡 Usage Scenarios
 
-### 🛒 E-ticaret Veri İşleme
+### 🛒 E-commerce Data Parsing
+
 ```asp
 Set json = New RabbitJSON
 json.Parse "https://api.example.com/products"
-' Array elementlerine erişim
 For i = 0 To json.GetValue("products").Count - 1
     Response.Write json.GetValue("products." & i & ".name", "-") & "<br>"
     Response.Write json.GetValue("products." & i & ".price", "0") & " TL<br>"
 Next
 ```
 
-### 🔄 REST API Entegrasyonu
+### ↺ REST API Integration
+
 ```asp
 Set json = New RabbitJSON
 json.Parse Request.Form("jsonData")
@@ -194,7 +208,8 @@ userName = json.GetValue("user.profile.displayName")
 userEmail = json.GetValue("user.contact.email")
 ```
 
-### ⚙️ Konfigürasyon Yönetimi
+### ⚙️ Configuration Management
+
 ```asp
 Set config = New RabbitJSON
 config.Parse Server.MapPath("config.json")
@@ -202,163 +217,173 @@ dbServer = config.GetValue("database.server", "localhost")
 dbPort = config.GetValue("database.port", 1433)
 ```
 
-### 🛡️ Güvenli Production Kullanımı
+### 🛡️ Secure Production Use
+
 ```asp
 Set json = New RabbitJSON
-' Production için güvenli ayarlar
 json.Config("maxDepth") = 20
 json.Config("strictMode") = True
 
 json.Parse userInputJson
 If json.HasError() Then
-    Response.Write "Geçersiz JSON formatı"
+    Response.Write "Invalid JSON format"
     json.ClearError()
 Else
-    ' Güvenli veri işleme
-    userName = json.GetValue("user.name", "Anonim")
-    Response.Write "Merhaba " & userName
+    userName = json.GetValue("user.name", "Anonymous")
+    Response.Write "Hello " & userName
 End If
 ```
 
 ---
 
-## 🔧 Teknik Özellikler
+## 🔧 Technical Specs
 
-- **Platform:** Classic ASP / VBScript 5.x+
-- **Bağımlılık:** Sıfır (sadece built-in COM objects)
-- **Dosya Boyutu:** 40.463 bayt (41 KB)
-- **Bellek Kullanımı:** Otomatik cleanup ile optimize
-- **Performans:** String işlemleri için optimize edilmiş
-- **Uyumluluk:** IIS 6.0+ ve Windows Server 2003+
-
----
-
-## 🆚 Neden Diğerleri Değil?
-
-### aspJSON.com Sorunları:
-❌ Unicode karakterlerde bozulma  
-❌ Büyük JSON dosyalarında bellek sızıntısı  
-❌ HTTP yükleme desteği yok  
-❌ Path-based erişim yok  
-
-### rcdmk/aspJSON Sorunları:
-❌ Artık güncellenmiyor (son güncelleme 2019)  
-❌ Modern JSON yapılarında hatalar  
-❌ Emoji desteği yok  
-❌ Performans sorunları  
-
-### RabbitJSON Avantajları:
-✅ **2025'te geliştiriliyor** - güncel ve modern  
-✅ **Kapsamlı test coverage** - 104 test senaryosu  
-✅ **Gerçek zamanlı benchmark** - şeffaf performans  
-✅ **Production-ready** - canlı projelerde kullanılıyor  
+* **Platform:** Classic ASP / VBScript 5.x+
+* **Dependencies:** None (uses built-in COM objects only)
+* **File Size:** 40.463 bytes (41 KB)
+* **Memory Use:** Optimized with auto-cleanup
+* **Performance:** Optimized for string operations
+* **Compatibility:** IIS 6.0+ and Windows Server 2003+
 
 ---
 
-## 📝 Sürüm Notları
+## 🔞 Why Not Others?
 
-### v2.1.1 (Güncel)
-- ✅ HTTP/HTTPS URL'den JSON yükleme
-- ✅ Configuration system (maxDepth, strictMode)
-- ✅ Default value support - GetValue(path, defaultValue)
-- ✅ Gelişmiş hata yönetimi (HasError, LastError, ClearError)
-- ✅ QuickParse ve QuickStringify static methodları
-- ✅ Version ve Count property'leri
-- ✅ Geliştirilmiş key parsing algoritması
-- ✅ VBScript uyumluluk düzeltmeleri
-- ✅ 104 test senaryosu ile %100 başarı oranı
+### aspJSON.com Issues:
+
+❌ Corrupts Unicode characters
+❌ Memory leaks on large files
+❌ No HTTP loading support
+❌ No path-based access
+
+### rcdmk/aspJSON Issues:
+
+❌ No longer maintained (last update in 2019)
+❌ Fails with modern JSON formats
+❌ No emoji support
+❌ Performance issues
+
+### RabbitJSON Advantages:
+
+✅ **Actively developed in 2025**
+✅ **Full test coverage** - 104 test scenarios
+✅ **Transparent benchmarking** - real performance metrics
+✅ **Production-ready** - used in live environments
+
+---
+
+## 📜 Release Notes
+
+### v2.1.1 (Current)
+
+* ✅ Load JSON from HTTP/HTTPS URLs
+* ✅ Config system (`maxDepth`, `strictMode`)
+* ✅ Default value support
+* ✅ Advanced error handling
+* ✅ QuickParse and QuickStringify static methods
+* ✅ Version and Count properties
+* ✅ Improved key parsing algorithm
+* ✅ VBScript compatibility fixes
+* ✅ 104 test scenarios with 100% success
 
 ### v2.1.0
-- ✅ Path-based veri erişimi
-- ✅ Unicode ve emoji tam desteği
-- ✅ Stringify ve StringifyCompact
-- ✅ Otomatik bellek yönetimi
+
+* ✅ Path-based data access
+* ✅ Full Unicode and emoji support
+* ✅ Stringify and StringifyCompact
+* ✅ Automatic memory management
 
 ---
 
-## 🚀 Gelecek Planları & Roadmap
+## 🚀 Roadmap & Future Plans
 
 ### 📋 v2.2.0 - Performance & Monitoring (Q1 2025)
 
-#### ⚡ **Performans İyileştirmeleri**
-- **String Processing Optimization:** Parse algoritmasında string işleme optimizasyonu
-- **Memory Management:** Gelişmiş bellek yönetimi ve garbage collection
-- **Lazy Loading:** Büyük JSON dosyaları için lazy loading desteği
-- **Caching System:** Parse edilen JSON'lar için internal caching sistemi
-- **Multi-threading Support:** Büyük veri setleri için asenkron işleme desteği
+#### ⚡ Performance Improvements
 
-#### 📊 **Performance Monitoring & Debug**
-- **Built-in Profiler:** Parse süreçlerini detaylı analiz eden profiler
-- **Performance Metrics API:** Detaylı performans metrikleri (`GetPerformanceStats()`)
-- **Debug Mode:** Verbose logging ve step-by-step parse tracking
+* String parsing optimization
+* Advanced memory management
+* Lazy loading support
+* Internal caching system
+* Async processing for large datasets
 
-#### 🌐 **Gelişmiş HTTP Request Özellikleri**
-- **Custom Headers Support:** `Parse(url, headers)` ile özel header desteği
-- **Authentication Methods:** Basic Auth, Bearer Token, API Key desteği
-- **Request Timeout Control:** Configurable timeout ayarları
-- **Retry Mechanism:** Başarısız istekler için otomatik retry
-- **Request Delay:** Rate limiting için configurable delay
-- **SSL/TLS Options:** Gelişmiş HTTPS güvenlik ayarları
-- **Proxy Support:** Corporate proxy environment desteği
+#### 📊 Performance Monitoring & Debug
 
-### 📋 v2.x.x - Planlanan Geliştirmeler (2026~)
+* Built-in profiler
+* `GetPerformanceStats()` metrics
+* Debug mode with verbose logs
 
-#### 🔧 **Yeni API Özellikleri**
-- **JSON Schema Validation:** Şema bazlı veri doğrulama
-- **Diff & Merge:** JSON objeleri arasında fark bulma ve birleştirme
+#### 🌐 HTTP Request Features
 
-#### 🛡️ **Güvenlik & Enterprise**
-- **Input Sanitization:** XSS ve injection koruması
-- **Access Control:** Field-level erişim kontrolü
-- **Audit Logging:** Detaylı işlem logları
-- **Encryption Support:** Hassas veri şifreleme
-- **Enterprise Config:** Kurumsal ortam ayarları
+* Custom headers: `Parse(url, headers)`
+* Auth: Basic, Bearer Token, API Key
+* Timeout control
+* Retry mechanism
+* Request delay
+* SSL/TLS options
+* Proxy support
 
-#### 🎯 **Büyük Yenilikler**
-- **Native COM Component:** C++ ile yazılmış yüksek performanslı core
+### 📋 Planned v2.x.x (2026\~)
 
----
+#### ⚙️ New API Features
 
-### 🤝 **Katkı & Feedback**
-Gelecek özellikler hakkında:
-- **Feature Request:** [GitHub Issues](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/issues) üzerinden öneride bulunun
-- **Beta Testing:** Yeni özellikler için beta test programına katılın
-- **Community Input:** [Discussions](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/discussions) ile görüşlerinizi paylaşın
+* JSON Schema validation
+* Diff & Merge support
+
+#### 🔒 Security & Enterprise
+
+* Input sanitization
+* Field-level access control
+* Audit logging
+* Encryption
+* Enterprise config options
+
+#### 🎯 Major Innovations
+
+* Native COM component written in C++
 
 ---
 
-## 📄 Lisans
+### 🤝 Contributions & Feedback
+
+* **Feature requests:** via [GitHub Issues](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/issues)
+* **Beta testing:** join the beta program
+* **Discussions:** Share feedback via [GitHub Discussions](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/discussions)
+
+---
+
+## 📄 License
 
 **MIT License** © 2025 Anthony Burak Dursun
 
 ```
-Bu yazılım MIT lisansı altında dağıtılmaktadır.
-Ticari ve kişisel projelerde özgürce kullanabilirsiniz.
+This software is licensed under the MIT License.
+You are free to use it in commercial and personal projects.
 ```
 
 ---
 
-## 🤝 Katkıda Bulun
+## 🤝 Contribute
 
-RabbitJSON'yi geliştirmek için:
+To contribute to RabbitJSON:
 
-1. Projeyi fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Pull Request açın
-
----
-
-## 🔗 Faydalı Linkler
-
-- 📖 **API Dokümantasyonu:** [RabbitJSON-Documentation.html](https://rabbitjson.com/v2/documentation.html)
-- 📖 **API Referansları:** [api.md](v2/api.md) - Eksiksiz API dokümantasyonu
-- 📋 **Tüm Örnekler:** [all-sample.html](https://rabbitjson.com/v2/all-sample.html)
-- 🧪 **Interactive Test Runner:** [all-sample-test/](https://rabbitjson.com/v2/all-sample-test/) - Canlı kod testleri
-- 🐛 **Bug Raporu:** [GitHub Issues](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/issues)
-- 💬 **Destek:** [Discussions](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/discussions)
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to your branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ---
 
-**🐇 RabbitJSON - Classic ASP'nin JSON geleceği!**
+## 🔗 Useful Links
+
+* 📖 **API Docs:** [RabbitJSON-Documentation.html](https://rabbitjson.com/v2/documentation.html)
+* 📖 **API Reference:** [api.md](v2/api.md)
+* 📌 **All Samples:** [all-sample.html](https://rabbitjson.com/v2/all-sample.html)
+* 🧪 **Test Runner:** [all-sample-test/](https://rabbitjson.com/v2/all-sample-test/)
+* �\udbug **Report Bugs:** [GitHub Issues](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/issues)
+* 💬 **Community Support:** [GitHub Discussions](https://github.com/badursun/RabbitJSON-ASP-JSON-Parser/discussions)
+
+---
+
+**🐇 RabbitJSON - The JSON future of Classic ASP!**
